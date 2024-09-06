@@ -9,6 +9,7 @@ TagManager:
   - Door
   - Wall
   - MiniGameItem
+  - DanceMovement
   layers:
   - Default
   - TransparentFX
