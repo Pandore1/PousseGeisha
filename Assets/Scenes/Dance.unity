@@ -497,10 +497,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0fee86b9e1d484bad49dd90c3dafa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  danceMovements:
-  - {fileID: 21300000, guid: 5504f3c6547ee3443b0159399d103e23, type: 3}
+  _danceMovements:
   - {fileID: 21300000, guid: eca05e2e163f46f4e9845e33f5416975, type: 3}
+  - {fileID: 21300000, guid: 5504f3c6547ee3443b0159399d103e23, type: 3}
   - {fileID: 21300000, guid: 98914f00c8d7b1c4cafefa9459a9b567, type: 3}
+  _correctSequence: []
 --- !u!1 &832136404
 GameObject:
   m_ObjectHideFlags: 0
