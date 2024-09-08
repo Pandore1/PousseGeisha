@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class DanseSequence : MonoBehaviour
 {
     [SerializeField] private Sprite[] _danceMovements;
+    //Les mouvements de la bonne Séquence qui a été enregistré
     [SerializeField] private List <Sprite> _correctSequence;
-   // [SerializeField] private Sprite[] correctSequence;
+    private int _verifySequence;
+
+
     private int _moveLenght;
     private Image _currentMove;
 //    [SerializeField] private Image _currentMove;
@@ -28,10 +31,6 @@ public class DanseSequence : MonoBehaviour
     {
     }
   
-    public void Blue()
-    {
-       
-    }
 
     IEnumerator MakeSequence()
     {
@@ -39,7 +38,7 @@ public class DanseSequence : MonoBehaviour
         Debug.Log("Création de la séquence");
         while (nbMove < _moveLenght)
         {
-            int randomMove = Random.Range(0, 2);
+            int randomMove = Random.Range(0, _danceMovements.Length);
             Debug.Log("item sequence" + randomMove);
 
             _currentMove.sprite = _danceMovements[randomMove];
@@ -52,5 +51,61 @@ public class DanseSequence : MonoBehaviour
         Debug.Log("Fin Sequence");
         
 
+    }
+  
+
+    public void Blue()
+    {
+        _currentMove.sprite = _danceMovements[0];
+        CheckCorrectBtn();
+
+    }
+    public void Red()
+    {
+        _currentMove.sprite = _danceMovements[1];
+        CheckCorrectBtn();
+    }
+    public void Green()
+    {
+        _currentMove.sprite = _danceMovements[2];
+        CheckCorrectBtn();
+     
+    }
+
+    public void CheckCorrectBtn()
+    {
+        if (_currentMove.sprite == _correctSequence[_verifySequence])
+        {
+            Debug.Log("Yeah!");
+            _verifySequence++;
+        }
+        else
+        {
+            Debug.Log("Fail");
+            FailSequence();
+
+            
+        }
+        if (_verifySequence >= _moveLenght)
+        {
+            EndSequence();
+        }
+    }
+    private void FailSequence() 
+    {
+        Debug.Log("choré manqué"); 
+        _verifySequence = 0;
+        _correctSequence.Clear();
+        StartSequence();
+
+    }
+
+    private void EndSequence()
+    {
+        Debug.Log("Choré réussite");
+        _moveLenght++;
+        _verifySequence = 0;
+        _correctSequence.Clear();
+        StartSequence();
     }
 }
