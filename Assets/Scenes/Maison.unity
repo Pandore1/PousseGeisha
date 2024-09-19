@@ -1459,7 +1459,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -106406626, guid: 49550cd8c2a0d5c40bf5c1a5fab6d5f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1480,7 +1480,7 @@ Transform:
   m_GameObject: {fileID: 309235879}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.15, y: 1.05, z: 0}
+  m_LocalPosition: {x: -3.15, y: 13.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1702,7 +1702,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.15, y: 1.05}
+  m_AnchoredPosition: {x: -3.15, y: 13.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &519420033
@@ -1949,7 +1949,7 @@ Transform:
   m_GameObject: {fileID: 1048768586}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.15, y: 1.05, z: -10}
+  m_LocalPosition: {x: -3.15, y: 13.7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2390,6 +2390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneSwitcher: {fileID: 1846376797}
   LevelBar: {fileID: 1555607748}
+  MoveLenght: 2
 --- !u!4 &1280573121
 Transform:
   m_ObjectHideFlags: 0
@@ -4637,7 +4638,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.22166663, y: 0.58500004, z: 0}
   m_MaxChunkCount: 16
@@ -5234,7 +5235,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: TeaCeremony
+            m_StringArgument: Dance
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!60 &2133159572
@@ -5439,6 +5440,114 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &6366444072740135851
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 646910468983266948, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 1148587841538811095, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148587841538811095, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148587841538811095, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568245261467710377, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568245261467710377, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568245261467710377, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568245261467710377, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568245261467710377, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568245261467710377, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568245261467710377, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568245261467710377, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568245261467710377, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568245261467710377, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913752790556486069, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: _dialogueSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913752790556486069, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: _dialogueContent.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913752790556486069, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: _dialogueContent.Array.data[0]
+      value: "Les singes sont des mammif\xE8res de l'ordre des primates, g\xE9n\xE9ralement
+        arboricoles, \xE0 la face souvent glabre et caract\xE9ris\xE9s par un enc\xE9phale
+        d\xE9velopp\xE9 et de longs membres termin\xE9s par des doigts."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913752790556486069, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: _dialogueContent.Array.data[1]
+      value: "Bien que leur ressemblance avec l'\xEAtre humain (Homo sapiens) ait
+        toujours frapp\xE9 les esprits, la science a mis de nombreux si\xE8cles \xE0
+        prouver le lien \xE9troit qui existe entre ceux-ci et l'esp\xE8ce humaine."
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913752790556486069, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: _dialogueContent.Array.data[2]
+      value: "Au sein des primates, les singes forment un infra-ordre monophyl\xE9tique,
+        si l'on y inclut le genre Homo, nomm\xE9 Simiiformes et qui se divise entre
+        les Platyrhiniens (singes du Nouveau Monde : Am\xE9rique centrale et m\xE9ridionale)
+        et les Catarhiniens"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424792761325787271, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 78.37402
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424792761325787271, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5733143211579930988, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
+      propertyPath: m_Name
+      value: Maneki Neko
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: edaba276fdfa60c489ad0bdb42aa1e66, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5455,3 +5564,4 @@ SceneRoots:
   - {fileID: 2133159570}
   - {fileID: 1860530065}
   - {fileID: 519420032}
+  - {fileID: 6366444072740135851}

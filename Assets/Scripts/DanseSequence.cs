@@ -8,10 +8,10 @@ public class DanseSequence : MonoBehaviour
     [SerializeField] private Sprite[] _danceMovements;
     //Les mouvements de la bonne Séquence qui a été enregistré
     [SerializeField] private List <Sprite> _correctSequence;
+    [SerializeField] private List<Button> _buttonsMoves;
     private int _verifySequence;
 
 
-    private int _moveLenght;
     private Image _currentMove;
 //    [SerializeField] private Image _currentMove;
 
@@ -19,7 +19,6 @@ public class DanseSequence : MonoBehaviour
     void Start()
     {   
         _currentMove = GetComponent<Image>();
-        _moveLenght = 5;
         StartSequence();
     }
     public void StartSequence()
@@ -34,12 +33,14 @@ public class DanseSequence : MonoBehaviour
 
     IEnumerator MakeSequence()
     {
+        _buttonsMoves.ForEach(buttonMove =>
+        {
+            buttonMove.interactable = false;
+        });
         float nbMove = 0f;
-        Debug.Log("Création de la séquence");
-        while (nbMove < _moveLenght)
+        while (nbMove < GameManager.Instance.MoveLenght)
         {
             int randomMove = Random.Range(0, _danceMovements.Length);
-            Debug.Log("item sequence" + randomMove);
 
             _currentMove.sprite = _danceMovements[randomMove];
             _correctSequence.Add(_danceMovements[randomMove]);
@@ -49,7 +50,11 @@ public class DanseSequence : MonoBehaviour
 
         }
         Debug.Log("Fin Sequence");
-        
+
+        _buttonsMoves.ForEach(buttonMove =>
+        {
+            buttonMove.interactable = true;
+        });
 
     }
   
@@ -76,19 +81,17 @@ public class DanseSequence : MonoBehaviour
     {
         if (_currentMove.sprite == _correctSequence[_verifySequence])
         {
-            Debug.Log("Yeah!");
             _verifySequence++;
         }
         else
         {
-            Debug.Log("Fail");
             FailSequence();
 
             
         }
-        if (_verifySequence >= _moveLenght)
+        if (_verifySequence >= GameManager.Instance.MoveLenght)
         {
-            EndSequence();
+            SuccessSequence();
         }
     }
     private void FailSequence() 
@@ -96,16 +99,17 @@ public class DanseSequence : MonoBehaviour
         Debug.Log("choré manqué"); 
         _verifySequence = 0;
         _correctSequence.Clear();
+        Invoke("StartSequence", 5f);
         StartSequence();
 
     }
 
-    private void EndSequence()
+    private void SuccessSequence()
     {
         Debug.Log("Choré réussite");
-        _moveLenght++;
+        GameManager.Instance.MoveLenght++;
         _verifySequence = 0;
         _correctSequence.Clear();
-        StartSequence();
+        Invoke("StartSequence", 5f);
     }
 }
