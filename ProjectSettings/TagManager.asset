@@ -10,6 +10,8 @@ TagManager:
   - Wall
   - MiniGameItem
   - DanceMovement
+  - CalligraphyPoint
+  - Brush
   layers:
   - Default
   - TransparentFX
