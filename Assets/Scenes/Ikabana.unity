@@ -771,6 +771,51 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &1381574432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1381574434}
+  - component: {fileID: 1381574433}
+  m_Layer: 0
+  m_Name: Action
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1381574433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381574432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cb1e64920b8e6d4f89d0945da080f6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fadeTexture: {fileID: 0}
+--- !u!4 &1381574434
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381574432}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1389969412
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +881,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1630355197}
         m_TargetAssemblyTypeName: IkabanaPuzzle, Assembly-CSharp
-        m_MethodName: restartGame
+        m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -899,10 +944,10 @@ RectTransform:
   - {fileID: 1321333024}
   m_Father: {fileID: 914269746}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 60}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 50.00003}
+  m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1630355196
 GameObject:
@@ -933,7 +978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92cc31d4891f3b1499c79cecc69d8ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _difficulty: 4
+  _difficulty: 2
   _gameHolder: {fileID: 699229451}
   _piecePrefab: {fileID: 1569293766161735667, guid: be852fe8b6df16d4da27b9c48dcf7860, type: 3}
   _puzzleTexture:
@@ -967,3 +1012,4 @@ SceneRoots:
   - {fileID: 190872182}
   - {fileID: 1630355198}
   - {fileID: 699229451}
+  - {fileID: 1381574434}

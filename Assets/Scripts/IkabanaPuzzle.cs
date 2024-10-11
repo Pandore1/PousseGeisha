@@ -164,12 +164,14 @@ public class IkabanaPuzzle : MonoBehaviour
 
     }
     private void UpdateBorder()
-    {
+    { 
+
+        //Faire la texture qui encadre le puzzle
         LineRenderer lineRenderer= _gameHolder.GetComponent<LineRenderer>();
         
         float halfWidth=(width*dimension.x)/2;
         float halfHeight=(height*dimension.y)/2;
-       lineRenderer.SetPosition(0,new Vector3(-halfWidth,halfHeight,0));
+        lineRenderer.SetPosition(0,new Vector3(-halfWidth,halfHeight,0));
         lineRenderer.SetPosition(1, new Vector3(halfWidth, halfHeight, 0));
         lineRenderer.SetPosition(2, new Vector3(halfWidth, -halfHeight, 0));
         lineRenderer.SetPosition(3, new Vector3(-halfWidth, -halfHeight, 0));
@@ -195,23 +197,26 @@ public class IkabanaPuzzle : MonoBehaviour
             piecesCorrect++;
             if (piecesCorrect == _pieces.Count)
             {
+                Debug.Log("BtnRestart");
                 playAgainBtn.SetActive(true);
             }
         }
     }
 
-    public void restartGame()
+    public void RestartGame()
     {
         //Détruire les pièces
         foreach (Transform piece in _pieces) { 
 
             Destroy(piece.gameObject);
         }
+        _difficulty++;
         _pieces.Clear();
        _gameHolder.GetComponent<LineRenderer>().enabled=false;
         //Montrer sélecteur de niveau
         playAgainBtn.SetActive(false);
         levelSelectPanel.gameObject.SetActive(true);
+        //GameManager.Instance.LevelBar.XpGain();
 
 
    

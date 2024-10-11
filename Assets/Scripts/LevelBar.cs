@@ -12,22 +12,11 @@ public class LevelBar : MonoBehaviour
     private float _taskMade=0;
     private float _totalTask = 5;
   
-    // Start is called before the first frame update
-    void Start()
-    {
-      
-    }
-
     // Update is called once per frame
     void Update()
     {
         _levelText.text= _currentLevel.ToString();
-        if (Input.GetButtonDown("Jump"))
-        {
-
-            XpGain();
-
-        }
+    
 
     }
     public void XpGain()

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6257664983752108225}
   - component: {fileID: 7818143214008053183}
-  - component: {fileID: 4201891825689151667}
   - component: {fileID: 8445909792765980612}
   m_Layer: 0
   m_Name: Brush
@@ -137,18 +136,6 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &4201891825689151667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3437802377407818494}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09c505a8a78146244bf13a40e02580f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &8445909792765980612
 Rigidbody2D:
   serializedVersion: 4

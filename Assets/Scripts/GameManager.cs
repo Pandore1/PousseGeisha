@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour
     [Header("Différents scripts")]
     public SceneSwitcher SceneSwitcher;
     public LevelBar LevelBar;
-    public IkabanaPuzzle PuzzleScript;
+ 
+    
     [Header("Mini-jeux niveau")]
     public int MoveLenght=2; //Nombre de mouvement dans la danse
+    public int CharacterNb = 1;
 
     private void Awake()
     {
