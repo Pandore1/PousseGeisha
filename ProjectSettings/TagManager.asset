@@ -13,6 +13,7 @@ TagManager:
   - CalligraphyPoint
   - Brush
   - PuzzlePiece
+  - Lantern
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Light
   - 
   - 
   - 
