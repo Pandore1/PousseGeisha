@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dance.unity
     guid: f611650e84f3589469162a6c5e6f6ebd
+  - enabled: 1
+    path: Assets/Scenes/Calligraphy.unity
+    guid: 138a4c53010fdd04dab418a38bd689ae
+  - enabled: 1
+    path: Assets/Scenes/Ikabana.unity
+    guid: a8f95764a35a6764d91a5e1968821489
   m_configObjects: {}
