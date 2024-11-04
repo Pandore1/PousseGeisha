@@ -11,6 +11,7 @@ public class TeaCeremony : MonoBehaviour
     [SerializeField] private TMPro.TMP_Text _totalObjectFindTxt;
     private int _totalObjectNb;
     private int _objectFoundNb;
+   
 
     void Start()
     {
@@ -25,16 +26,17 @@ public class TeaCeremony : MonoBehaviour
         _objectFoundTxt.text = _objectFoundNb.ToString();
     }
     public void FoundObject(string objectName)
-    {
+    { 
         foreach (GameObject item in _itemsList) {
             TMPro.TMP_Text itemName = item.transform.Find("ObjectName").GetComponent<TMPro.TMP_Text>();
-            Debug.Log(itemName.text);
-            if (itemName.text == objectName) { 
+            //Debug.Log(itemName.text);
+            if (itemName.text == objectName) {
+               
                 item.gameObject.SetActive(false);
                 _objectFoundNb++;
                 if (_objectFoundNb == _totalObjectNb)
                 {
-                    Debug.Log("Yeah!");
+                   // Debug.Log("Yeah!");
                     //GameManager.Instance.LevelBar.XpGain();
                 }
                 break;
