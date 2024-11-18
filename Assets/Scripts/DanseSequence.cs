@@ -108,7 +108,7 @@ public class DanseSequence : MonoBehaviour
     {
         Debug.Log("Choré réussite");
         GameManager.Instance.MoveLenght++;
-        GameManager.Instance.LevelBar.XpGain();
+        ApplicationManager.Instance.LevelBar.XpGain();
         _verifySequence = 0;
         _correctSequence.Clear();
         Invoke("StartSequence", 5f);

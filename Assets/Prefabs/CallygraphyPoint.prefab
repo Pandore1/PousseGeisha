@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 4.925057}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -135,5 +135,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartLine: 0
   nbLine: 0
-  CollidedSprite: {fileID: 21300000, guid: e58f9bd9b000e4c4a8c99e08f50115aa, type: 3}
+  CollidedSprite: {fileID: 21300000, guid: 70522333758ecca4f85667f83b9b1f88, type: 3}
   nonCollided: {fileID: 3832646211770834349}

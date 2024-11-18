@@ -9,11 +9,7 @@ public class DrawingCharacter : MonoBehaviour
 
     private Collider2D _lastHitCollider;
     Vector2 lastPosition;
-    [SerializeField] private GameObject _nextCaracterBtn;
 
-
-    [SerializeField] private float _minDistance = 0.7f;
-    [SerializeField] private float _maxDistance = 1f;
     [Header ("Brush")]
     [SerializeField] private List<GameObject> _brushList;
     [SerializeField] private GameObject _brushPrefab;
@@ -23,7 +19,8 @@ public class DrawingCharacter : MonoBehaviour
 
     [Header("Caracter")]
     [SerializeField] private GameObject[] _caracterList;
-    [SerializeField] private int _caracterIndex=0;    
+    [SerializeField] private int _caracterIndex=0;
+    [SerializeField] private GameObject _nextCaracterBtn;
     private void Start()
     {  
         if(Camera.main != null)
@@ -103,6 +100,7 @@ public class DrawingCharacter : MonoBehaviour
 
         bool isCaracterEnd = false;
         GameObject[] _calligraphyTable = GameObject.FindGameObjectsWithTag("CalligraphyPoint");
+        Debug.Log(_calligraphyTable.Length);
         foreach (GameObject point in _calligraphyTable)
         {
             if (!point.gameObject.GetComponent<Collider2D>().enabled)
@@ -118,10 +116,9 @@ public class DrawingCharacter : MonoBehaviour
         if (isCaracterEnd) {
 
             Debug.Log("Yeah");
-          
+            
            _nextCaracterBtn.SetActive(true);
-            //HideCaracter();
-            //GameManager.Instance.LevelBar.XpGain();
+            ApplicationManager.Instance.LevelBar.XpGain();
 
         }
     }
