@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ApplicationManager : MonoBehaviour
 {   public static ApplicationManager Instance;
-    // Start is called before the first frame update
+
+    [SerializeField] private KeyCode _quitKey = KeyCode.Escape;//touche escape par défaut mais peut modifier
+
     [Header("Différents scripts")]
     public SceneSwitcher SceneSwitcher;
     public LevelBar LevelBar;
+
+    public GameObject _levelBar;
     private void Awake()
     {
         //on crée l'instance du singleton si elle n'existe pas déja
@@ -24,11 +29,16 @@ public class ApplicationManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
     }
-
+   
     // Update is called once per frame
     void Update()
     {
-        
+
+        if (Input.GetKeyUp(_quitKey))
+        {
+            Quit();
+        }
+      
 
     }
     public void Quit()

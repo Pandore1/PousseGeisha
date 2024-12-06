@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class IkabanaPuzzle : MonoBehaviour
 {
     [Header("Élément Puzzle")]
-    [Range(2,6)]
+    [Range(1,6)]
     [SerializeField] private int _difficulty=4;
     [SerializeField] private Transform _gameHolder;
     [SerializeField] private Transform _piecePrefab;
@@ -16,6 +16,7 @@ public class IkabanaPuzzle : MonoBehaviour
     [SerializeField] private Transform levelSelectPanel;
     [SerializeField] private Image levelSelectPrefab;
     [SerializeField] private GameObject playAgainBtn;
+    [SerializeField] private GameObject _tutorialBtn;
     private List<Transform> _pieces;
     private Vector2Int dimension;
     private float width;
@@ -28,20 +29,33 @@ public class IkabanaPuzzle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach(Texture2D puzzleModel in _puzzleTexture)
+        if (GameManager.Instance.TrainingPhaseIndex==0)
         {
-            Image piece =Instantiate(levelSelectPrefab, levelSelectPanel);
-            piece.sprite = Sprite.Create(puzzleModel, new Rect(0, 0, puzzleModel.width, puzzleModel.height), Vector2.zero);
-            piece.GetComponent<Button>().onClick.AddListener(delegate { StartPuzzle(puzzleModel); });
+            _tutorialBtn.SetActive(true);
+
+            Image piece = Instantiate(levelSelectPrefab, levelSelectPanel);
+            piece.sprite = Sprite.Create(_puzzleTexture[0], new Rect(0, 0, _puzzleTexture[0].width, _puzzleTexture[0].height), Vector2.zero);
+            piece.GetComponent<Button>().onClick.AddListener(delegate { StartPuzzle(_puzzleTexture[0]); });
+
+
         }
+        else
+        {
+            foreach (Texture2D puzzleModel in _puzzleTexture)
+            {
+                Image piece = Instantiate(levelSelectPrefab, levelSelectPanel);
+                piece.sprite = Sprite.Create(puzzleModel, new Rect(0, 0, puzzleModel.width, puzzleModel.height), Vector2.zero);
+                piece.GetComponent<Button>().onClick.AddListener(delegate { StartPuzzle(puzzleModel); });
+            }
+
+        }
+   
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0)){
-
-
 
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition),Vector2.zero);
        
@@ -83,12 +97,12 @@ public class IkabanaPuzzle : MonoBehaviour
         UpdateBorder();
         piecesCorrect = 0;
     }
-  
+
+    //Vérifier si les dimensions du puzzle sont verticale ou horizontale
 
     Vector2Int GetDimensions(Texture2D puzzleTexture,int difficulty)
     {
         Vector2Int dimension=Vector2Int.zero;
-
         if (puzzleTexture.width < puzzleTexture.height)
         {
             dimension.x = difficulty;
@@ -180,6 +194,7 @@ public class IkabanaPuzzle : MonoBehaviour
 
     private void SnapDisable()
     {
+        
         int pieceIndex = _pieces.IndexOf(_draggingPiece);
 
 
@@ -198,7 +213,22 @@ public class IkabanaPuzzle : MonoBehaviour
             if (piecesCorrect == _pieces.Count)
             {
                 Debug.Log("BtnRestart");
-                playAgainBtn.SetActive(true);
+              
+                if (GameManager.Instance.TrainingPhaseIndex == 0)
+                {
+                    foreach (Transform piece in _pieces)
+                    {
+
+                        Destroy(piece.gameObject);
+                    }
+                    _pieces.Clear();
+                    _difficulty++;
+                    ApplicationManager.Instance.LevelBar.XpGain();
+                }
+                else
+                {
+                    playAgainBtn.SetActive(true);
+                }
             }
         }
     }
@@ -210,13 +240,14 @@ public class IkabanaPuzzle : MonoBehaviour
 
             Destroy(piece.gameObject);
         }
+       
         _difficulty++;
         _pieces.Clear();
        _gameHolder.GetComponent<LineRenderer>().enabled=false;
         //Montrer sélecteur de niveau
         playAgainBtn.SetActive(false);
         levelSelectPanel.gameObject.SetActive(true);
-        //GameManager.Instance.LevelBar.XpGain();
+        ApplicationManager.Instance.LevelBar.XpGain();
 
 
    

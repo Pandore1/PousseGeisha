@@ -18,6 +18,7 @@ public class TeaCeremony : MonoBehaviour
 
     //Animate Object
     [Header("Objet interractif")]
+    [SerializeField] private Material _glowMaterial;
     [SerializeField] private GameObject _hishakuBucket;
     [SerializeField] private GameObject _chasenBridge;
     [SerializeField] private GameObject _chawanLilypad;
@@ -44,7 +45,7 @@ public class TeaCeremony : MonoBehaviour
     }
     public void FoundObject(string objectName)
     {
-        Debug.Log(objectName);
+    
         foreach (GameObject item in _itemsList) {
             Debug.Log(item.ToString());
             TMPro.TMP_Text itemName = item.transform.Find("ObjectName").GetComponent<TMPro.TMP_Text>();
@@ -55,8 +56,8 @@ public class TeaCeremony : MonoBehaviour
                 _objectFoundNb++;
                 if (_objectFoundNb == _totalObjectNb)
                 {
-                   // Debug.Log("Yeah!");
-                    ApplicationManager.Instance.LevelBar.XpGain();
+                    Debug.Log("Yeah!");
+                   // ApplicationManager.Instance.LevelBar.XpGain();
                 }
                 break;
             }
@@ -64,34 +65,35 @@ public class TeaCeremony : MonoBehaviour
     }
     private async void AnimateObjectFind(GameObject objectFound)
     {
-        Debug.Log(objectFound);
-        objectFound.transform.DORotate(new Vector3(0,0,260f), 1f).SetDelay(1f);
-        objectFound.transform.DOScale(new Vector3(0f, 0f, 0f),1f).SetDelay(1f);
-        await DelayAsync(2);
-        DesactivateObject(objectFound);
+        objectFound.GetComponent<SpriteRenderer>().material = _glowMaterial;
+        objectFound.transform.DORotate(new Vector3(0,0,260f), 1f).SetDelay(1.2f);
+        objectFound.transform.DOScale(new Vector3(0f, 0f, 0f),1f).SetDelay(1.1f);
+       await GameManager.DelayAsync(2);
+
+        objectFound.SetActive(false);
     }
    
 
-    private void DesactivateObject(GameObject objectFound)
-    {
-        objectFound.gameObject.SetActive(false);
-    }
-    public void FoundHishaku()
+ 
+    public async void FoundHishaku()
     {
         _hishakuBucket.transform.DOMoveY(2,1);
+        await DelayAsync(1);
         AnimateObjectFind(_hishakuBucket);
     }
 
-    public void FoundChasen()
+    public async void FoundChasen()
     {
         _chasenBridge.GetComponent<SpriteRenderer>().sortingOrder = 20;
-        _chasenBridge.transform.DOScale(new Vector3(2f, 2f, 2f), 1f);
+        _chasenBridge.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.5f);
+        await DelayAsync(0.5f);
         AnimateObjectFind (_chasenBridge);
     }
     public async void FoundChawan()
     {
-        _lilypad.transform.DOMove(new Vector3(0,0,0),2).SetEase(Ease.OutSine);
+        _lilypad.transform.DOMove(new Vector3(0,-0.9f,0),2).SetEase(Ease.OutSine);
         await DelayAsync(1);
+        //await GameManager.DelayAsync(1);
         AnimateObjectFind(_chawanLilypad);
     }
 
@@ -101,20 +103,25 @@ public class TeaCeremony : MonoBehaviour
         _basket.transform.DORotate(new Vector3(0,0,90f), 0.5f);
         Invoke("FallChaire", 0.2f);
     }
-    public void FallChaire()
+    public async void FallChaire()
     {   
         Rigidbody2D _bodyChaire=_chaireBasket.GetComponent<Rigidbody2D>();
         _bodyChaire.isKinematic = false;
-        Vector2 rollDirection = new Vector2(-2f, -1f); // Adjust as needed
+        Vector2 rollDirection = new Vector2(-2f, -1f); 
+        await DelayAsync(1);
+        //await GameManager.DelayAsync(1);
         _bodyChaire.AddForce(rollDirection * 0.5f);
+      
     }
-    public void FlyBird()
-    {
+    public async void FlyBird()
+    { 
         Animator _animatorBird = _bird.GetComponent<Animator>();
         _animatorBird.SetTrigger("Fly");
+        await DelayAsync(1);
         AnimateObjectFind(_teapotBird);
 
     }
+
     public static async Task DelayAsync(float secondDelay)
     {
         float startTime = Time.time;

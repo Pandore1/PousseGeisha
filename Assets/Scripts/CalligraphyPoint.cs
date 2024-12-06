@@ -16,8 +16,4 @@ public class CalligraphyPoint : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

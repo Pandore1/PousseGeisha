@@ -19,15 +19,17 @@ public class DrawingCharacter : MonoBehaviour
 
     [Header("Caracter")]
     [SerializeField] private GameObject[] _caracterList;
-    [SerializeField] private int _caracterIndex=0;
     [SerializeField] private GameObject _nextCaracterBtn;
     private void Start()
-    {  
+    {
+        Debug.Log(GameManager.Instance.CharacterNb);
         if(Camera.main != null)
         {
             _drawCamera = Camera.main;
 
         }
+        _caracterList[GameManager.Instance.CharacterNb].SetActive(true);
+
     }
     private void Update()
     {
@@ -118,7 +120,8 @@ public class DrawingCharacter : MonoBehaviour
             Debug.Log("Yeah");
             
            _nextCaracterBtn.SetActive(true);
-            ApplicationManager.Instance.LevelBar.XpGain();
+           ApplicationManager.Instance.LevelBar.XpGain();
+        
 
         }
     }
@@ -132,13 +135,13 @@ public class DrawingCharacter : MonoBehaviour
         {
             caracter.SetActive(false);
         }
-        if (_caracterList.Length != _caracterIndex + 1)
+        if (_caracterList.Length != GameManager.Instance.CharacterNb + 1)
         {
             _nextCaracterBtn.SetActive(false);
-            _caracterIndex++;
+            GameManager.Instance.CharacterNb++;
 
         }
-        _caracterList[_caracterIndex].SetActive(true);
+        _caracterList[GameManager.Instance.CharacterNb].SetActive(true);
         
 
     }

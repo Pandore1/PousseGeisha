@@ -5,20 +5,19 @@ using UnityEngine.UI;
 
 public class DanseSequence : MonoBehaviour
 {
-    [SerializeField] private Sprite[] _danceMovements;
+    //[SerializeField] private GameObject[] _danceMovements;
     //Les mouvements de la bonne Séquence qui a été enregistré
-    [SerializeField] private List <Sprite> _correctSequence;
-    [SerializeField] private List<Button> _buttonsMoves;
+    [SerializeField] private List<GameObject> _correctSequence;
+    [SerializeField] private List<GameObject> _buttonsMoves;
+    [SerializeField] private Material _danceGlow;
     private int _verifySequence;
 
 
-    private Image _currentMove;
-//    [SerializeField] private Image _currentMove;
+    private GameObject _currentMove;
 
     // Start is called before the first frame update
     void Start()
     {   
-        _currentMove = GetComponent<Image>();
         StartSequence();
     }
     public void StartSequence()
@@ -35,51 +34,62 @@ public class DanseSequence : MonoBehaviour
     {
         _buttonsMoves.ForEach(buttonMove =>
         {
-            buttonMove.interactable = false;
+            buttonMove.GetComponent<Collider2D>().enabled = false;
         });
         float nbMove = 0f;
         while (nbMove < GameManager.Instance.MoveLenght)
         {
-            int randomMove = Random.Range(0, _danceMovements.Length);
+            int randomMove = Random.Range(0, _buttonsMoves.Count);
 
-            _currentMove.sprite = _danceMovements[randomMove];
-            _correctSequence.Add(_danceMovements[randomMove]);
+            _currentMove = _buttonsMoves[randomMove];
+            _currentMove.GetComponent<SpriteRenderer>().material = _danceGlow;
+            _correctSequence.Add(_buttonsMoves[randomMove]);
             nbMove++;
 
             yield return new WaitForSeconds(2);
+            _currentMove.GetComponent<SpriteRenderer>().material =default;
+
 
         }
         Debug.Log("Fin Sequence");
 
         _buttonsMoves.ForEach(buttonMove =>
         {
-            buttonMove.interactable = true;
+            buttonMove.GetComponent<Collider2D>().enabled = true;
+           
         });
 
     }
   
 
-    public void Blue()
+    public void Dance1()
     {
-        _currentMove.sprite = _danceMovements[0];
+        _currentMove = _buttonsMoves[0];
         CheckCorrectBtn();
 
     }
-    public void Red()
+    public void Dance2()
     {
-        _currentMove.sprite = _danceMovements[1];
+       _currentMove = _buttonsMoves[1];
         CheckCorrectBtn();
     }
-    public void Green()
+    public void Dance3()
     {
-        _currentMove.sprite = _danceMovements[2];
+       _currentMove= _buttonsMoves[2];
         CheckCorrectBtn();
      
+    }
+    public void Dance4()
+    {
+       _currentMove= _buttonsMoves[3];
+        CheckCorrectBtn();
+
     }
 
     public void CheckCorrectBtn()
     {
-        if (_currentMove.sprite == _correctSequence[_verifySequence])
+        Debug.Log("check");
+        if (_currentMove== _correctSequence[_verifySequence])
         {
             _verifySequence++;
         }
@@ -107,10 +117,11 @@ public class DanseSequence : MonoBehaviour
     private void SuccessSequence()
     {
         Debug.Log("Choré réussite");
-        GameManager.Instance.MoveLenght++;
-        ApplicationManager.Instance.LevelBar.XpGain();
+
         _verifySequence = 0;
         _correctSequence.Clear();
         Invoke("StartSequence", 5f);
+        GameManager.Instance.MoveLenght++;
+        ApplicationManager.Instance.LevelBar.XpGain();
     }
 }
