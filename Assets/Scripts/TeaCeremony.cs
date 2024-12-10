@@ -20,6 +20,7 @@ public class TeaCeremony : MonoBehaviour
     [Header("Objet interractif")]
     [SerializeField] private Material _glowMaterial;
     [SerializeField] private GameObject _hishakuBucket;
+    [SerializeField] private GameObject _bucket;
     [SerializeField] private GameObject _chasenBridge;
     [SerializeField] private GameObject _chawanLilypad;
     [SerializeField] private GameObject _lilypad;
@@ -28,6 +29,8 @@ public class TeaCeremony : MonoBehaviour
 
     [SerializeField] private GameObject _basket;
     [SerializeField] private GameObject _chaireBasket;
+    [SerializeField] private GameObject _branchGrove;
+    [SerializeField] private GameObject _fukusaGrove;
 
    
 
@@ -74,11 +77,16 @@ public class TeaCeremony : MonoBehaviour
     }
    
 
- 
+    public void FlipBucket()
+    {
+        _bucket.transform.DORotate(new Vector3(0, 0, -90), 1f, RotateMode.LocalAxisAdd);
+        Invoke("FoundHishaku", 0.5f);
+    }
     public async void FoundHishaku()
     {
-        _hishakuBucket.transform.DOMoveY(2,1);
+        _hishakuBucket.transform.DOMove(new Vector3(-4f,-4f,0),1f);
         await DelayAsync(1);
+        FoundObject("Hishaku");
         AnimateObjectFind(_hishakuBucket);
     }
 
@@ -87,6 +95,7 @@ public class TeaCeremony : MonoBehaviour
         _chasenBridge.GetComponent<SpriteRenderer>().sortingOrder = 20;
         _chasenBridge.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.5f);
         await DelayAsync(0.5f);
+        FoundObject("Chasen");
         AnimateObjectFind (_chasenBridge);
     }
     public async void FoundChawan()
@@ -94,6 +103,7 @@ public class TeaCeremony : MonoBehaviour
         _lilypad.transform.DOMove(new Vector3(0,-0.9f,0),2).SetEase(Ease.OutSine);
         await DelayAsync(1);
         //await GameManager.DelayAsync(1);
+        FoundObject("Chawan");
         AnimateObjectFind(_chawanLilypad);
     }
 
@@ -113,15 +123,36 @@ public class TeaCeremony : MonoBehaviour
         _bodyChaire.AddForce(rollDirection * 0.5f);
       
     }
+    
     public async void FlyBird()
     { 
         Animator _animatorBird = _bird.GetComponent<Animator>();
         _animatorBird.SetTrigger("Fly");
-        await DelayAsync(1);
+        _teapotBird.GetComponent<SpriteRenderer>().sortingOrder =3;
+    await DelayAsync(1);
+        //await GameManager.DelayAsync(1);
+    
         AnimateObjectFind(_teapotBird);
 
     }
 
+    public void ShakeBranch()
+    {
+       _branchGrove.transform.DOShakeRotation(1,new Vector3(0, 90, 0f), randomness: 0);
+        _branchGrove.transform.DORotate(new Vector3(0,0,90f), 2f, RotateMode.LocalAxisAdd).SetDelay(0.5f);
+        Invoke("FallFukusa", 1f);
+   
+        
+
+    }
+    public async void FallFukusa()
+    {
+        _fukusaGrove.GetComponent<SpriteRenderer>().sortingOrder = 20;
+    
+        await DelayAsync(1);
+        //await GameManager.DelayAsync(1);
+        AnimateObjectFind(_fukusaGrove);
+    }
     public static async Task DelayAsync(float secondDelay)
     {
         float startTime = Time.time;

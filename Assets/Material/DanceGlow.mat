@@ -217,7 +217,7 @@ Material:
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
     - _Surface: 1
-    - _Thickness: 0.888
+    - _Thickness: 0.99
     - _UseUIAlphaClip: 0
     - _WindQuality: 0
     - _WorkflowMode: 0
@@ -229,7 +229,7 @@ Material:
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 0}
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
-    - _OutlineColor: {r: 50.011795, g: 51.37788, b: 8.482196, a: 0.7882353}
+    - _OutlineColor: {r: 65.990944, g: 67.7935, b: 11.192322, a: 0.7882353}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Specular: {r: 0, g: 0, b: 0, a: 0}

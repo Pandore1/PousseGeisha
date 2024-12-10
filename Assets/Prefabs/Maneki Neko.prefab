@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0c0ef6b030df4a04aa68977f70dd190b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 87284d0daaced5741896c6cc2e45d544, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 3913752790556486069}
   - component: {fileID: 5769973198020836717}
   - component: {fileID: 2338568737422911382}
-  - component: {fileID: 5254409773596322160}
+  - component: {fileID: -3522653415921471235}
   m_Layer: 0
   m_Name: Maneki Neko
   m_TagString: ManekiNeko
@@ -245,7 +245,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8411274027428905407}
-  - {fileID: 3172249342828342305}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7826688466135813591
@@ -268,7 +267,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 2e0d272c28afcd044b23b6bb602c0e3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -286,8 +285,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -4723017
+  m_SortingLayer: 5
   m_SortingOrder: 6
   m_Sprite: {fileID: -850271173, guid: b812043d4d3b8aa4c932653c1adbdc11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -312,17 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e58e9986a7c344fa1cca2d90b0de3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogueLines:
-  - "Les singes sont des mammif\xE8res de l'ordre des primates, g\xE9n\xE9ralement
-    arboricoles, \xE0 la face souvent glabre et caract\xE9ris\xE9s par un enc\xE9phale"
-  - " d\xE9velopp\xE9 et de longs membres termin\xE9s par des doigts. Bien que leur
-    ressemblance avec l'\xEAtre humain (Homo sapiens) ait toujours frapp\xE9 les
-    esprits,"
-  - " la science a mis de nombreux si\xE8cles \xE0 prouver le lien \xE9troit qui
-    existe entre ceux-ci et l'esp\xE8ce humaine."
-  - "Au sein des primates, les singes forment un infra-ordre monophyl\xE9tique, si
-    l'on y inclut le genre Homo, nomm\xE9 Simiiformes et qui se divise entre les
-    Platyrhiniens "
+  _dialogueLines: []
   _dialogueComponent: {fileID: 1148587841538811095}
   _dialogueCanva: {fileID: 7153217101611921232}
   _index: 0
@@ -377,8 +366,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!70 &5254409773596322160
-CapsuleCollider2D:
+--- !u!60 &-3522653415921471235
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -406,12 +395,158 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.29, y: 1.7}
-  m_Direction: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.29, y: 1.7}
+    newSize: {x: 1.29, y: 1.7}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.545, y: -0.72999996}
+      - {x: 0.42499998, y: -0.37}
+      - {x: 0.39499998, y: -0.16}
+      - {x: 0.505, y: -0.089999996}
+      - {x: 0.555, y: -0.02}
+      - {x: 0.60499996, y: 0.089999996}
+      - {x: 0.645, y: 0.29999998}
+      - {x: 0.645, y: 0.5}
+      - {x: 0.565, y: 0.57}
+      - {x: 0.445, y: 0.58}
+      - {x: 0.36499998, y: 0.53999996}
+      - {x: 0.305, y: 0.48}
+      - {x: 0.315, y: 0.39}
+      - {x: 0.325, y: 0.35999998}
+      - {x: 0.36499998, y: 0.26999998}
+      - {x: 0.315, y: 0.35999998}
+      - {x: 0.305, y: 0.42999998}
+      - {x: 0.325, y: 0.74}
+      - {x: 0.285, y: 0.84999996}
+      - {x: 0.16499999, y: 0.84999996}
+      - {x: -0.035, y: 0.71}
+      - {x: -0.13499999, y: 0.71}
+      - {x: -0.345, y: 0.84999996}
+      - {x: -0.45499998, y: 0.84999996}
+      - {x: -0.48499998, y: 0.82}
+      - {x: -0.475, y: 0.48}
+      - {x: -0.525, y: 0.39999998}
+      - {x: -0.475, y: 0.17}
+      - {x: -0.585, y: 0.03}
+      - {x: -0.625, y: -0.089999996}
+      - {x: -0.615, y: -0.26999998}
+      - {x: -0.60499996, y: -0.55}
+      - {x: -0.645, y: -0.68}
+      - {x: -0.645, y: -0.79999995}
+      - {x: -0.615, y: -0.83}
+      - {x: -0.42499998, y: -0.84999996}
+      - {x: 0.044999998, y: -0.84999996}
+      - {x: 0.235, y: -0.84}
+      - {x: 0.475, y: -0.84}
+  m_UseDelaunayMesh: 0
+--- !u!1 &6310756070341626639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8756856630439772219}
+  - component: {fileID: 6015434872853079414}
+  - component: {fileID: 34284203829192609}
+  - component: {fileID: 3906726456402299767}
+  m_Layer: 0
+  m_Name: ManekiNeko
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8756856630439772219
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6310756070341626639}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8411274027428905407}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -665, y: -139.99994}
+  m_SizeDelta: {x: 288, y: 403}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6015434872853079414
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6310756070341626639}
+  m_CullTransparentMesh: 1
+--- !u!114 &34284203829192609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6310756070341626639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 1984494861, guid: c20ee6e46c4d45a4597416691d32dcd0, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!95 &3906726456402299767
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6310756070341626639}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2062c2d03e9b9d7419a3c27b650d3610, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7153217101611921232
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +578,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8756856630439772219}
   - {fileID: 3832960990217300781}
   m_Father: {fileID: 1568245261467710377}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -463,7 +599,7 @@ Canvas:
   m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -514,89 +650,3 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1 &8264624245979481206
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3172249342828342305}
-  - component: {fileID: 3372509989429165548}
-  m_Layer: 0
-  m_Name: Light 2D
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3172249342828342305
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8264624245979481206}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.107, y: 0.058, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1568245261467710377}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3372509989429165548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8264624245979481206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ComponentVersion: 1
-  m_LightType: 3
-  m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.537
-  m_Color: {r: 1, g: 0.78157085, b: 0.3820755, a: 1}
-  m_Intensity: 2
-  m_LightVolumeIntensity: 0.05
-  m_LightVolumeIntensityEnabled: 1
-  m_ApplyToSortingLayers: 29ffd0820000000045f41dd3f187ace84b05280bd7bdee11b7eeb7ff
-  m_LightCookieSprite: {fileID: 0}
-  m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
-  m_OverlapOperation: 1
-  m_NormalMapDistance: 3
-  m_NormalMapQuality: 2
-  m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 0
-  m_ShadowIntensity: 0.75
-  m_ShadowVolumeIntensityEnabled: 0
-  m_ShadowVolumeIntensity: 0.75
-  m_LocalBounds:
-    m_Center: {x: 0, y: -0.00000011920929, z: 0}
-    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 360
-  m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1.55
-  m_ShapeLightParametricSides: 5
-  m_ShapeLightParametricAngleOffset: 0
-  m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 1.01
-  m_ShapeLightFalloffOffset: {x: 0, y: 0}
-  m_ShapePath:
-  - {x: -0.5113302, y: 0.052969933, z: 0}
-  - {x: -0.5130158, y: -0.62864494, z: 0}
-  - {x: -0.082232535, y: -0.74729824, z: 0}
-  - {x: 0.36370754, y: -0.6791401, z: 0}
-  - {x: 0.5, y: 0, z: 0}
-  - {x: 0.36370754, y: 0.65594006, z: 0}
-  - {x: -0.09768915, y: 0.8198509, z: 0}
-  - {x: -0.36235672, y: 0.5256891, z: 0}

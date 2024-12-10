@@ -1,27 +1,41 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DanseSequence : MonoBehaviour
 {
+    [SerializeField] private Timer _timerScript;
     //[SerializeField] private GameObject[] _danceMovements;
     //Les mouvements de la bonne Séquence qui a été enregistré
     [SerializeField] private List<GameObject> _correctSequence;
     [SerializeField] private List<GameObject> _buttonsMoves;
     [SerializeField] private Material _danceGlow;
+    [SerializeField] private Material _defaultMaterial;
     private int _verifySequence;
 
 
     private GameObject _currentMove;
 
+    public int MoveLenghtDebug=2;
+
     // Start is called before the first frame update
-    void Start()
-    {   
+
+    public async void StartTimer()
+    {
+        _buttonsMoves.ForEach(buttonMove =>
+        {
+            buttonMove.GetComponent<Collider2D>().enabled = false;
+        });
+        _timerScript.StartCounter(3);
+        await DelayAsync(3);
         StartSequence();
+        //Invoke("StartSequence", 3);
     }
     public void StartSequence()
-    {
+    {   
         StartCoroutine(MakeSequence());
     }
     // Update is called once per frame
@@ -36,8 +50,8 @@ public class DanseSequence : MonoBehaviour
         {
             buttonMove.GetComponent<Collider2D>().enabled = false;
         });
-        float nbMove = 0f;
-        while (nbMove < GameManager.Instance.MoveLenght)
+        int nbMove = 0;
+        while (nbMove < /*GameManager.Instance.MoveLenght*/MoveLenghtDebug)
         {
             int randomMove = Random.Range(0, _buttonsMoves.Count);
 
@@ -46,8 +60,8 @@ public class DanseSequence : MonoBehaviour
             _correctSequence.Add(_buttonsMoves[randomMove]);
             nbMove++;
 
-            yield return new WaitForSeconds(2);
-            _currentMove.GetComponent<SpriteRenderer>().material =default;
+            yield return new WaitForSeconds(2.5f);
+            _currentMove.GetComponent<SpriteRenderer>().material = _defaultMaterial;
 
 
         }
@@ -85,9 +99,12 @@ public class DanseSequence : MonoBehaviour
         CheckCorrectBtn();
 
     }
-
+     //Vérifier si le bon mouvement a été réalisé
     public void CheckCorrectBtn()
     {
+        _currentMove.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.5f);
+        _currentMove.transform.DOScale(new Vector3(1, 1, 1), 0.2f).SetDelay(0.8f);
+
         Debug.Log("check");
         if (_currentMove== _correctSequence[_verifySequence])
         {
@@ -95,33 +112,45 @@ public class DanseSequence : MonoBehaviour
         }
         else
         {
+            _currentMove.transform.DOShakeRotation(0.5f, new Vector3(0, 0, 50f), randomness: 0);
             FailSequence();
-
-            
         }
-        if (_verifySequence >= GameManager.Instance.MoveLenght)
+        if (_verifySequence >= MoveLenghtDebug /*GameManager.Instance.MoveLenght*/)
         {
             SuccessSequence();
         }
     }
-    private void FailSequence() 
+    private async void FailSequence() 
     {
         Debug.Log("choré manqué"); 
         _verifySequence = 0;
         _correctSequence.Clear();
-        Invoke("StartSequence", 5f);
+        await DelayAsync(2);
         StartSequence();
 
     }
 
-    private void SuccessSequence()
+    private async void SuccessSequence()
     {
         Debug.Log("Choré réussite");
 
         _verifySequence = 0;
+        MoveLenghtDebug++;
         _correctSequence.Clear();
-        Invoke("StartSequence", 5f);
-        GameManager.Instance.MoveLenght++;
-        ApplicationManager.Instance.LevelBar.XpGain();
+        await DelayAsync(3);
+        StartSequence();
+      
+        //Invoke("StartSequence", 2f);
+        
+       // GameManager.Instance.MoveLenght++;
+        //ApplicationManager.Instance.LevelBar.XpGain();
+    }
+
+    public async Task DelayAsync(float secondDelay)
+    {
+        float startTime = Time.time;
+        while (Time.time < startTime + secondDelay) await Task.Yield();
+
+
     }
 }

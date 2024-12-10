@@ -27,16 +27,31 @@ public class Geisha : MonoBehaviour
         _dirX = Input.GetAxisRaw("Horizontal");
         _dirY = Input.GetAxisRaw("Vertical");
         _isWalking = _dirX != 0||_dirY!=0;
-        _animator.SetBool("Walking", _isWalking);
+        
         float scaleX = transform.localScale.x;
-        if (_dirX > 0)
+           if (_dirY == -1)
         {
-            scaleX = 1f;
+            _animator.SetBool("WalkingUp", _isWalking);
         }
-        else if (_dirX < 0)
+        else if (_dirY == 1)
+        {
+            _animator.SetBool("WalkingDown", _isWalking);
+        }
+        if (_dirX != 0)
+        {
+            _animator.SetBool("WalkingSide", _isWalking);
+        }  
+    else if(_dirX==1)
         {
             scaleX = -1f;
+         
         }
+        else if (_dirX ==-1)
+        {
+            scaleX = 1f;
+        
+        }
+     
         transform.localScale = new Vector3(scaleX, 1, 1);
     }
     private void FixedUpdate()
