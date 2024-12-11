@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class DrawingCharacter : MonoBehaviour
@@ -20,15 +23,18 @@ public class DrawingCharacter : MonoBehaviour
     [Header("Caracter")]
     [SerializeField] private GameObject[] _caracterList;
     [SerializeField] private GameObject _nextCaracterBtn;
+    [SerializeField] private GameObject _restartBtn;
+
+    public int _caracterCountDebug;
     private void Start()
     {
-        Debug.Log(GameManager.Instance.CharacterNb);
+       // Debug.Log(GameManager.Instance.CharacterNb);
         if(Camera.main != null)
         {
             _drawCamera = Camera.main;
 
         }
-        _caracterList[GameManager.Instance.CharacterNb].SetActive(true);
+        _caracterList[/*GameManager.Instance.CharacterNb*/_caracterCountDebug].SetActive(true);
 
     }
     private void Update()
@@ -45,34 +51,53 @@ public class DrawingCharacter : MonoBehaviour
         {
             Vector2 mousePosition = _drawCamera.ScreenToWorldPoint(Input.mousePosition);
             Collider2D hit = Physics2D.OverlapPoint(mousePosition);
-            if (hit&&hit.gameObject.tag== "CalligraphyPoint")
+            if (hit&&hit.gameObject.tag== "CalligraphyPoint") //Check si c'est bien un point
+
             {
-                CalligraphyPoint pointScript = hit.GetComponent<CalligraphyPoint>();
+                CalligraphyPoint pointScript = hit.GetComponent<CalligraphyPoint>(); //Récupérer le cript
                 if (pointScript != null) {
                     pointScript.nonCollided.sprite = pointScript.CollidedSprite;
-                    //  float distance =Vector2.Distance(hit.transform.position,lastPosition);
-                    if (_currentLineRenderer == null && pointScript.StartLine == true)
+
+
+                    try
                     {
 
-                        CreateBrush(hit, mousePosition);
-                        lastPosition = mousePosition;
+                        if (_currentLineRenderer == null && pointScript.StartLine == true)
+                        {
+
+                            CreateBrush(hit, mousePosition);
+                            lastPosition = mousePosition;
+
+                        }
+                        else if (pointScript.nbLine == _lastHitCollider.GetComponent<CalligraphyPoint>().nbLine)
+                        {
+                            AddPoint(mousePosition);
+                            lastPosition = mousePosition;
+
+
+                        }
+                   
+                        hit.enabled = false;
+                        _lastHitCollider = hit;
 
                     }
-                    else if (pointScript.nbLine==_lastHitCollider.GetComponent<CalligraphyPoint>().nbLine)
-                    {   
-                        AddPoint(mousePosition);
-                        lastPosition = mousePosition;
-                    
+                    catch(Exception e) {
+                        GameObject[] _calligraphyTable = GameObject.FindGameObjectsWithTag("CalligraphyPoint");
+                        Debug.Log(_calligraphyTable.Length);
+                        foreach (GameObject point in _calligraphyTable)
+                        {
+                            if (point.gameObject.GetComponent<Collider2D>().enabled)
+                            {
+                              point.gameObject.GetComponent<Collider2D>().enabled = false;
+                            }
+                         
+                        }
+                        _restartBtn.SetActive(true);
 
                     }
-                    hit.enabled = false;
-                    _lastHitCollider = hit;
-                  
+           
                 }
-
-               
             }
-
         }
         else if (Input.GetMouseButtonUp(0))
         {
@@ -96,9 +121,17 @@ public class DrawingCharacter : MonoBehaviour
         _currentLineRenderer.SetPosition(0, mousePosition);
         _lastHitCollider = hit;
     }
+    void AddPoint(Vector2 pointPosition)
+    {
+        _currentLineRenderer.positionCount++;
+        int positionIndex = _currentLineRenderer.positionCount - 1;
+        _currentLineRenderer.SetPosition(positionIndex, pointPosition);
+
+    }
+
     public void CheckCaracterEnd()
     {
-        Debug.Log("Check");
+        //Debug.Log("Check");
 
         bool isCaracterEnd = false;
         GameObject[] _calligraphyTable = GameObject.FindGameObjectsWithTag("CalligraphyPoint");
@@ -117,42 +150,56 @@ public class DrawingCharacter : MonoBehaviour
         }
         if (isCaracterEnd) {
 
-            Debug.Log("Yeah");
             
            _nextCaracterBtn.SetActive(true);
-           ApplicationManager.Instance.LevelBar.XpGain();
+          // ApplicationManager.Instance.LevelBar.XpGain();
         
 
         }
     }
      public void HideCaracter()
-    {   foreach(GameObject brush in _brushList)
+    {   //Détruire tous les line renderer
+        foreach (GameObject brush in _brushList)
         {
-            Destroy(brush); //Détruire tous les line renderer
+            Destroy(brush); 
         }
         _brushList.Clear();
+
+        //
         foreach (GameObject caracter in _caracterList)
         {
             caracter.SetActive(false);
         }
-        if (_caracterList.Length != GameManager.Instance.CharacterNb + 1)
+        if (_caracterList.Length != /*GameManager.Instance.CharacterNb*/_caracterCountDebug+1)
         {
             _nextCaracterBtn.SetActive(false);
-            GameManager.Instance.CharacterNb++;
+            //GameManager.Instance.CharacterNb++;
+            _caracterCountDebug++;
 
         }
-        _caracterList[GameManager.Instance.CharacterNb].SetActive(true);
-        
+        _caracterList[/*GameManager.Instance.CharacterNb*/_caracterCountDebug].SetActive(true);
+
 
     }
+    public void RestartCharacter()
+    {
+        foreach (GameObject brush in _brushList)
+        {
+            Destroy(brush); //Détruire tous les line renderer
+        }
+        GameObject[] _calligraphyTable = GameObject.FindGameObjectsWithTag("CalligraphyPoint");
 
-    void AddPoint(Vector2 pointPosition)
-    {   
-        _currentLineRenderer.positionCount++;
-        int positionIndex=_currentLineRenderer.positionCount-1;
-        _currentLineRenderer.SetPosition(positionIndex,pointPosition);
+        foreach (GameObject point in _calligraphyTable)
+        {
+            point.gameObject.GetComponent<Collider2D>().enabled = true;
+            CalligraphyPoint pointScript = point.GetComponent<CalligraphyPoint>();
+            pointScript.nonCollided.sprite = pointScript.NoCollideSprite;
 
+        }
+        _brushList.Clear();
+        _restartBtn.SetActive(false);
     }
+
 
    
 

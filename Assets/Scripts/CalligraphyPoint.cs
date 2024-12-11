@@ -8,12 +8,16 @@ public class CalligraphyPoint : MonoBehaviour
     public int nbLine;
  
     public Sprite CollidedSprite;
+    public Sprite NoCollideSprite;
     public SpriteRenderer nonCollided;
     // Start is called before the first frame update
     void Start()
     {
         nonCollided = GetComponent<SpriteRenderer>();
+        nonCollided.sprite = NoCollideSprite;
     }
+   
+ 
 
     // Update is called once per frame
 }
