@@ -10,7 +10,7 @@ public class ApplicationManager : MonoBehaviour
     [SerializeField] private KeyCode _quitKey = KeyCode.Escape;//touche escape par défaut mais peut modifier
 
     [Header("Différents scripts")]
-    public SceneSwitcher SceneSwitcher;
+
     public LevelBar LevelBar;
 
     public GameObject _levelBar;
@@ -40,6 +40,20 @@ public class ApplicationManager : MonoBehaviour
         }
       
 
+    }
+    public void SwitchScene(string sceneName)
+    {
+        
+        SceneManager.LoadScene(sceneName);
+        if (sceneName == "Menu")
+        {
+            ApplicationManager.Instance._levelBar.SetActive(false);
+        }
+        else
+        {
+            ApplicationManager.Instance._levelBar.SetActive(true);
+
+        }
     }
     public void Quit()
     {

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4225133796375875542}
   m_Layer: 0
   m_Name: GamePiece
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

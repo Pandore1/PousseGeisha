@@ -1531,15 +1531,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1486252172275227021, guid: 0208000f4b064624b87523ade9afa520, type: 3}
       propertyPath: m_Name
-      value: Actions
+      value: SceneSwitcher
       objectReference: {fileID: 0}
     - target: {fileID: 5431866029262587612, guid: 0208000f4b064624b87523ade9afa520, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.044546
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5431866029262587612, guid: 0208000f4b064624b87523ade9afa520, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.50589
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5431866029262587612, guid: 0208000f4b064624b87523ade9afa520, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1731,7 +1731,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 3
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 351eb1d903a894a4d8d1a2b9c3afc0c9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 23a551b4e8e30b54f8e69d684a42a86d, type: 2}
   m_sharedMaterial: {fileID: -4460516955297267133, guid: 351eb1d903a894a4d8d1a2b9c3afc0c9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1795,7 +1795,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1255847040
@@ -1821,7 +1821,7 @@ MonoBehaviour:
   TimeLeft: 3
   _activeTimer: 0
   _timerText: {fileID: 1255847039}
-  _buttonTimer: {fileID: 0}
+  _buttonTimer: {fileID: 1626650268}
 --- !u!1 &1258354370
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,6 +2216,34 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 68.85
       objectReference: {fileID: 0}
+    - target: {fileID: 6869393260980128415, guid: 1f66508acf26923419ccc1ed3c548f3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869393260980128415, guid: 1f66508acf26923419ccc1ed3c548f3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869393260980128415, guid: 1f66508acf26923419ccc1ed3c548f3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1746351180}
+    - target: {fileID: 6869393260980128415, guid: 1f66508acf26923419ccc1ed3c548f3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869393260980128415, guid: 1f66508acf26923419ccc1ed3c548f3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StartTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869393260980128415, guid: 1f66508acf26923419ccc1ed3c548f3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DanseSequence, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869393260980128415, guid: 1f66508acf26923419ccc1ed3c548f3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6874961402988172332, guid: 1f66508acf26923419ccc1ed3c548f3c, type: 3}
       propertyPath: m_Name
       value: Button
@@ -2308,6 +2336,11 @@ PrefabInstance:
 --- !u!224 &1626650267 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8330944496896254786, guid: 1f66508acf26923419ccc1ed3c548f3c, type: 3}
+  m_PrefabInstance: {fileID: 1626650266}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1626650268 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6874961402988172332, guid: 1f66508acf26923419ccc1ed3c548f3c, type: 3}
   m_PrefabInstance: {fileID: 1626650266}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1746351178

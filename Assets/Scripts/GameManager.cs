@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using DG.Tweening;
 using System.Threading.Tasks;
@@ -20,11 +19,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private RectTransform _levelFill;
 
     public float TaskMade = 0;
-    public float TotalTask = 5;
+    public float TotalTask = 3;
     public float CurrentLevel=0;
     [Header("Geisha")]
     [SerializeField] private string[] TrainingPhase;
-    public int TrainingPhaseIndex = 0;
+    public int TrainingPhaseIndex = 1;
 
     private void Awake()
     {
@@ -41,17 +40,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
     }
-    void Start()
-    {
- 
-    }
-
     // Update is called once per frame
-    void Update()
-    {
-        
-    
-    }
+
     public static async Task DelayAsync(float secondDelay)
     {
         float startTime = Time.time;
@@ -65,6 +55,10 @@ public class GameManager : MonoBehaviour
         if (CurrentLevel == 1)
         {
             TrainingPhaseIndex++;
+        }
+        if (CurrentLevel==4)
+        {
+            ApplicationManager.Instance.SwitchScene("Geisha");
         }
    TaskMade = 0;
     }

@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DanseSequence : MonoBehaviour
 {
@@ -32,7 +31,6 @@ public class DanseSequence : MonoBehaviour
         _timerScript.StartCounter(3);
         await DelayAsync(3);
         StartSequence();
-        //Invoke("StartSequence", 3);
     }
     public void StartSequence()
     {   
@@ -51,7 +49,7 @@ public class DanseSequence : MonoBehaviour
             buttonMove.GetComponent<Collider2D>().enabled = false;
         });
         int nbMove = 0;
-        while (nbMove < /*GameManager.Instance.MoveLenght*/MoveLenghtDebug)
+        while (nbMove < GameManager.Instance.MoveLenght)
         {
             int randomMove = Random.Range(0, _buttonsMoves.Count);
 
@@ -115,7 +113,7 @@ public class DanseSequence : MonoBehaviour
             _currentMove.transform.DOShakeRotation(0.5f, new Vector3(0, 0, 50f), randomness: 0);
             FailSequence();
         }
-        if (_verifySequence >= MoveLenghtDebug /*GameManager.Instance.MoveLenght*/)
+        if (_verifySequence >= GameManager.Instance.MoveLenght)
         {
             SuccessSequence();
         }
@@ -137,13 +135,13 @@ public class DanseSequence : MonoBehaviour
         _verifySequence = 0;
         MoveLenghtDebug++;
         _correctSequence.Clear();
-        await DelayAsync(3);
+        await DelayAsync(2);
+        GameManager.Instance.MoveLenght++;
+        ApplicationManager.Instance.LevelBar.XpGain();
         StartSequence();
-      
-        //Invoke("StartSequence", 2f);
+   
         
-       // GameManager.Instance.MoveLenght++;
-        //ApplicationManager.Instance.LevelBar.XpGain();
+      
     }
 
     public async Task DelayAsync(float secondDelay)

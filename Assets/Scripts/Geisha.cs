@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Geisha : MonoBehaviour
@@ -24,35 +23,44 @@ public class Geisha : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         _dirX = Input.GetAxisRaw("Horizontal");
         _dirY = Input.GetAxisRaw("Vertical");
-        _isWalking = _dirX != 0||_dirY!=0;
-        
+        _isWalking = _dirX != 0 || _dirY != 0;
+
         float scaleX = transform.localScale.x;
-           if (_dirY == -1)
+
+        if (_isWalking)
         {
-            _animator.SetBool("WalkingUp", _isWalking);
+    
+
+            // Set appropriate animation
+            if (_dirY == 1)
+            {
+                _animator.SetBool("WalkingUp", true);
+            }
+            else if (_dirY == -1)
+            {
+                _animator.SetBool("WalkingDown", true);
+            }
+            else if (_dirX != 0)
+            {
+                _animator.SetBool("WalkingSide", true);
+
+                // Flip character
+                scaleX = _dirX > 0 ? -1f : 1f;
+            }
+
+            transform.localScale = new Vector3(scaleX, 1, 1);
         }
-        else if (_dirY == 1)
+        else
         {
-            _animator.SetBool("WalkingDown", _isWalking);
+            // Reset animations when not walking
+            _animator.SetBool("WalkingUp", false);
+            _animator.SetBool("WalkingDown", false);
+            _animator.SetBool("WalkingSide", false);
         }
-        if (_dirX != 0)
-        {
-            _animator.SetBool("WalkingSide", _isWalking);
-        }  
-    else if(_dirX==1)
-        {
-            scaleX = -1f;
-         
-        }
-        else if (_dirX ==-1)
-        {
-            scaleX = 1f;
-        
-        }
-     
-        transform.localScale = new Vector3(scaleX, 1, 1);
+
     }
     private void FixedUpdate()
     {

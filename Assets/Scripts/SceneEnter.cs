@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using System.Threading.Tasks;
+
 
 
 public class SceneEnter : MonoBehaviour
@@ -25,7 +24,7 @@ public class SceneEnter : MonoBehaviour
     {
         await GameManager.DelayAsync(2);
 
-        ApplicationManager.Instance.SceneSwitcher.SwitchScene("Shikomi");
+        ApplicationManager.Instance.SwitchScene("Shikomi");
     }
 
     // Update is called once per frame

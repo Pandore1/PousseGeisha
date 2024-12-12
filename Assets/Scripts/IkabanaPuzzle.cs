@@ -1,4 +1,4 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -59,7 +59,7 @@ public class IkabanaPuzzle : MonoBehaviour
 
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition),Vector2.zero);
        
-            if (hit) { 
+            if (hit&&hit.collider.gameObject.tag=="PuzzlePiece") { 
 
                 _draggingPiece=hit.transform;
                 offset=_draggingPiece.position- Camera.main.ScreenToWorldPoint(Input.mousePosition);

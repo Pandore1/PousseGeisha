@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
+
 using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
-using Unity.VisualScripting;
-using UnityEditor.Build;
+
 using UnityEngine;
 
 public class DrawingCharacter : MonoBehaviour
@@ -25,16 +23,16 @@ public class DrawingCharacter : MonoBehaviour
     [SerializeField] private GameObject _nextCaracterBtn;
     [SerializeField] private GameObject _restartBtn;
 
-    public int _caracterCountDebug;
+    //public int _caracterCountDebug;
     private void Start()
     {
-       // Debug.Log(GameManager.Instance.CharacterNb);
+       Debug.Log(GameManager.Instance.CharacterNb);
         if(Camera.main != null)
         {
             _drawCamera = Camera.main;
 
         }
-        _caracterList[/*GameManager.Instance.CharacterNb*/_caracterCountDebug].SetActive(true);
+        _caracterList[GameManager.Instance.CharacterNb].SetActive(true);
 
     }
     private void Update()
@@ -170,14 +168,14 @@ public class DrawingCharacter : MonoBehaviour
         {
             caracter.SetActive(false);
         }
-        if (_caracterList.Length != /*GameManager.Instance.CharacterNb*/_caracterCountDebug+1)
+        if (_caracterList.Length != GameManager.Instance.CharacterNb+1)
         {
             _nextCaracterBtn.SetActive(false);
-            //GameManager.Instance.CharacterNb++;
-            _caracterCountDebug++;
+            GameManager.Instance.CharacterNb++;
+            ApplicationManager.Instance.LevelBar.XpGain();
 
         }
-        _caracterList[/*GameManager.Instance.CharacterNb*/_caracterCountDebug].SetActive(true);
+        _caracterList[GameManager.Instance.CharacterNb].SetActive(true);
 
 
     }

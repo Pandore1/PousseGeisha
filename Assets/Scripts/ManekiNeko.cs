@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class ManekiNeko : MonoBehaviour
@@ -52,7 +52,7 @@ public class ManekiNeko : MonoBehaviour
     }
     void NextLine()
     {
-        if(_index < _dialogueLines.Length - 1)
+        if(_index < _dialogueLines.Length-1)
         {
             _index++;
             _dialogueComponent.text=string.Empty;
